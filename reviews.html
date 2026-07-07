@@ -1439,10 +1439,58 @@
         bottom: 36px;
       }
     }
+
+    /* ---------- WHATSAPP FLOAT BUTTON ---------- */
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 800;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, .3);
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--white);
+    }
+
+    @media (max-width: 640px) {
+      .whatsapp-float {
+        right: 16px;
+        bottom: 16px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .whatsapp-float svg {
+        width: 27px;
+        height: 27px;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <a href="https://wa.me/94761071584" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.696 4.61 1.897 6.484L4 29l7.73-1.865A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm6.994 16.99c-.29.816-1.68 1.57-2.317 1.646-.593.07-1.35.099-2.176-.137-.5-.145-1.144-.362-1.972-.71-3.47-1.498-5.735-4.987-5.909-5.22-.174-.234-1.42-1.888-1.42-3.602s.905-2.556 1.226-2.907c.32-.35.697-.438.93-.438.232 0 .465.002.668.012.214.01.502-.081.785.599.29.696.986 2.41 1.073 2.585.087.174.145.38.029.613-.116.234-.174.38-.348.585-.174.204-.365.456-.522.612-.174.174-.355.363-.153.71.203.35.902 1.487 1.938 2.408 1.332 1.188 2.456 1.556 2.805 1.73.348.174.552.146.756-.087.203-.234.87-1.013 1.103-1.362.232-.35.465-.29.784-.174.32.116 2.032.958 2.38 1.132.348.174.58.262.667.408.087.146.087.845-.203 1.661z"/>
+    </svg>
+  </a>
 
   <header id="siteHeader">
     <div class="wrap">
@@ -1488,7 +1536,8 @@
             <img class="review-avatar-circle" src="assets/portrait_5.jpg" alt="Yenuli Meleesha">
           </div>
           <div class="review-text clamped">Thank you so much aiya for doing my 21st birthday shoot exactly the way I had
-            it in my mind, and even more beautifully than I imagined. Every single photo is more beautiful than the
+            it
+            in my mind, and even more beautifully than I imagined. Every single photo is more beautiful than the
             last. My birthday became so much more special because of those amazing photos. I’m really happy that you
             did both the photos and videos beautifully for me, exactly how I asked, without any shortcomings or
             discomfort. Thank you so much for giving me a beautiful memories to make my day special...You put so much
@@ -1510,7 +1559,7 @@
             <span class="review-quote-mark">&ldquo;</span>
             <img class="review-avatar-circle" src="assets/portrait_7_1.jpg" alt="Chanuli Janeesha">
           </div>
-          <div class="review-text clamped">A huge thank you to you aiya… I still can’t get over these photos. Every
+          <div class="review-text clamped">A huge thank you to you, aiya… I still can’t get over these photos. Every
             picture made me smile and you captured every little moment so naturally and beautifully. Thank you for
             making me feel comfortable throughout the shoot and for turning my simple Avurudu idea into something so
             special. These are memories I’ll always keep close to my heart. I’m honestly so happy I trusted you with
@@ -1710,7 +1759,7 @@
           <div>
             <h4>Contact</h4>
             <ul>
-              <li><a href="tel:+94761071584">076 107 1584</a></li>
+              <li><a href="tel:+94761071584">Call</a></li>
               <li><a href="https://instagram.com/chaniru.arw">Instagram</a></li>
               <li><a href="https://facebook.com/chaniru.arw">Facebook</a></li>
             </ul>
