@@ -818,7 +818,7 @@
       margin-top: 56px;
     }
 
-    /* ---------- TESTIMONIALS ---------- */
+    /* ---------- TESTIMONIALS (photo tiles) ---------- */
     .testimonials {
       background: var(--ink);
       color: var(--white);
@@ -838,35 +838,114 @@
     .t-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      gap: 26px;
     }
 
     .t-card {
-      border: 1px solid rgba(255, 255, 255, .14);
-      padding: 38px 32px;
-      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      min-height: 400px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      background-size: cover;
+      background-position: center;
+      isolation: isolate;
     }
 
-    .t-quote {
+    .t-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, rgba(10, 7, 6, .55) 0%, rgba(10, 7, 6, .72) 55%, rgba(8, 5, 5, .92) 100%);
+      filter: saturate(.5);
+    }
+
+    .t-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .t-quote-mark {
       font-family: var(--serif);
-      font-size: 20px;
-      line-height: 1.55;
-      margin-bottom: 26px;
-      color: rgba(255, 255, 255, .92);
+      font-size: 52px;
+      color: rgba(255, 255, 255, .55);
+      line-height: 1;
+    }
+
+    .t-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, .5);
     }
 
     .t-name {
-      font-size: 13px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--red-bright);
+      font-family: var(--serif);
+      font-style: italic;
       font-weight: 500;
+      font-size: 22px;
+      color: rgba(255, 255, 255, .9);
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
     }
 
-    .t-role {
-      font-size: 12px;
-      color: rgba(255, 255, 255, .5);
-      margin-top: 3px;
+    .t-quote {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, .82);
+      font-weight: 300;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .t-quote.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .t-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 22px;
+      position: relative;
+      z-index: 1;
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, .85);
+      font-weight: 400;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+
+    .t-more-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s ease, transform .3s ease;
+    }
+
+    .t-card:hover .t-more-icon {
+      background: var(--red);
+      transform: translateX(3px);
     }
 
     .t-note {
@@ -1226,6 +1305,7 @@
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#portfolio">Portfolio</a>
+        <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
       </nav>
       <a href="tel:+94761071584" class="nav-call">CALL</a>
@@ -1423,53 +1503,99 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials">
+  <section class="testimonials" id="reviews">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Kind Words</span>
         <h2>From the Lovely Clients</h2>
       </div>
       <div class="t-grid reveal">
-        <div class="t-card">
-          <div class="t-quote">"Thank you so much aiya for doing my 21st birthday shoot exactly the way I had it in my mind, and even more beautifully than I imagined. 🥹❤️ Every single photo is more beautiful than the last. My birthday became so much more special because of those amazing photos.✨ I’m really happy that you did both the photos and videos beautifully for me, exactly how I asked, without any shortcomings or discomfort. Thank you so much for giving me a beautiful memories to make my day special...You put so much effort to make it beautiful.💪🏼
-No doubt you are the best photographer I’ve ever had.🫶🏻
-I'm really happy that I choose you. I highly recommend you to anyone looking best photographer for capturing their beautiful moments.💯
 
-Once again Thank you so much aiya and wishing you all the very best for your futuer works ❤️✨....I'm waiting to work with you again."</div>
+        <div class="t-card" style="background-image:url('assets/portrait_5.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_5.jpg" alt="Yenuli Meleesha">
+          </div>
+          <div class="t-quote clamped">Thank you so much aiya for doing my 21st birthday shoot exactly the way I had it
+            in my mind, and even more beautifully than I imagined. Every single photo is more beautiful than the
+            last. My birthday became so much more special because of those amazing photos. I’m really happy that you
+            did both the photos and videos beautifully for me, exactly how I asked, without any shortcomings or
+            discomfort. Thank you so much for giving me a beautiful memories to make my day special...You put so much
+            effort to make it beautiful.
+            No doubt you are the best photographer I’ve ever had.
+            I'm really happy that I choose you. I highly recommend you to anyone looking best photographer for capturing
+            their beautiful moments.
+
+            Once again Thank you so much aiya and wishing you all the very best for your futuer works.... I'm waiting
+            to work with you again.</div>
           <div class="t-name">Yenuli Meleesha</div>
-          <div class="t-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
         </div>
-        <div class="t-card">
-          <div class="t-quote">"Chaniru made us forget the camera was even there. The photos feel exactly like the day
-            did."</div>
+
+        <div class="t-card" style="background-image:url('assets/portrait_7.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_7_1.jpg" alt="Chanuli Janeesha">
+          </div>
+          <div class="t-quote clamped">Chaniru made us forget the camera was even there. The photos feel exactly like
+            the day did.</div>
           <div class="t-name">Chanuli Janeesha</div>
-          <div class="t-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
         </div>
-        
-        <div class="t-card">
-          <div class="t-quote">"An absolute joy to work with! The shoot was laid-back and fun, and the photos turned out
-            beautifully. If you need some fresh portraits and want a genuinely enjoyable experience, book a session
-            immediately with Chaniru."</div>
+
+
+        <div class="t-card" style="background-image:url('assets/portrait_8_1.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_8.jpg" alt="Chrissy Fernando">
+          </div>
+          <div class="t-quote clamped">An absolute joy to work with Chaniru! The shoot was laid back and fun, and the
+            photos turned out beautifully. If you need some fresh portraits and want a genuinely enjoyable experience,
+            book a session immediately with Chaniru.</div>
           <div class="t-name">Chrissy Fernando</div>
-          <div class="t-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
         </div>
-        <div class="t-card">
-          <div class="t-quote">"Looking through our final gallery was like reliving the magic all over again. The
+
+        <div class="t-card" style="background-image:url('assets/Engagement.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/Engagement_2_1.jpg" alt="Nawoda & Supun">
+          </div>
+          <div class="t-quote clamped">Looking through our final gallery was like reliving the magic all over again. The
             attention to detail was incredible, and every special moment was captured perfectly without feeling forced
-            or overly posed. Highly recommend for any couple looking for a true professional."</div>
-          <div class="t-name">Nawoda & Supun</div>
-          <div class="t-role">Engagement</div>
+            or overly posed. Highly recommend for any couple looking for a true professional.</div>
+          <div class="t-name">Nawoda &amp; Supun</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
         </div>
-        <div class="t-card">
-          <div class="t-quote">"We didn't just get pictures — we got our whole day back to relive."</div>
+
+        <div class="t-card" style="background-image:url('assets/portrait_9_1.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_9.jpg" alt="Placeholder Client">
+          </div>
+          <div class="t-quote clamped">Chaniru is a fantastic photographer! He knows exactly how to capture the perfect
+            angle and make you feel completely comfortable during the shoot. The quality of the final photos speaks for
+            itself.</div>
+          <div class="t-name">Nethmi Silva</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div>
+
+        <!-- <div class="t-card"
+          style="background-image:url('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=800&q=80');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar"
+              src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=150&q=80"
+              alt="Placeholder Client">
+          </div>
+          <div class="t-quote clamped">We didn't just get pictures — we got our whole day back to relive.</div>
           <div class="t-name">Placeholder Client</div>
-          <div class="t-role">Wedding, Kandy</div>
-        </div>
-        <div class="t-card">
-          <div class="t-quote">"We didn't just get pictures — we got our whole day back to relive."</div>
-          <div class="t-name">Placeholder Client</div>
-          <div class="t-role">Wedding, Kandy</div>
-        </div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div> -->
+
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="reviews.html" class="btn btn-dark">Read All Reviews</a>
       </div>
     </div>
   </section>
@@ -1542,6 +1668,7 @@ Once again Thank you so much aiya and wishing you all the very best for your fut
               <li><a href="#about">About</a></li>
               <li><a href="#services">Services</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#reviews">Reviews</a></li>
             </ul>
           </div>
           <div>
@@ -1630,6 +1757,18 @@ Once again Thank you so much aiya and wishing you all the very best for your fut
         gItems.forEach(item => {
           item.style.display = (f === 'all' || item.dataset.cat === f) ? '' : 'none';
         });
+      });
+    });
+    // testimonial "Read More" toggle
+    document.querySelectorAll('.t-more').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.t-card');
+        const text = card.querySelector('.t-quote');
+        const isClamped = text.classList.contains('clamped');
+        text.classList.toggle('clamped', !isClamped);
+        btn.innerHTML = isClamped
+          ? '<span class="t-more-icon">&#8593;</span> Show Less'
+          : '<span class="t-more-icon">&#8594;</span> Read More&hellip;';
       });
     });
   </script>
