@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Gallery | Chaniru Jayawardhana</title>
+  <title>Chaniru Jayawardhana | Portrait Photographer</title>
   <meta name="description"
-    content="Browse the full portfolio of chaniru.arw — weddings, engagements and portrait sessions across Sri Lanka, organised by album.">
+    content="Chaniru Jayawardhana (chaniru.arw) — portrait photography across Sri Lanka. Timeless frames, honest moments.">
   <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -117,6 +117,16 @@
       border-color: var(--red-bright);
     }
 
+    .btn-outline {
+      border-color: rgba(255, 255, 255, .55);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, .08);
+    }
+
     .btn-dark {
       border-color: var(--ink);
       color: var(--ink);
@@ -127,7 +137,19 @@
       color: var(--white);
     }
 
-    /* ---------- NAV (shared with main site) ---------- */
+    .btn-white {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--ink);
+    }
+
+    .btn-white:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ---------- NAV ---------- */
     header {
       position: fixed;
       top: 0;
@@ -146,8 +168,23 @@
       justify-content: space-between;
     }
 
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
     .logo-img {
       height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-white-img {
+      display: none;
+    }
+
+    .footer-logo-img {
+      height: 34px;
       width: auto;
       display: block;
     }
@@ -185,14 +222,6 @@
     }
 
     nav.links a:hover::after {
-      width: 100%;
-    }
-
-    nav.links a.current {
-      color: var(--red);
-    }
-
-    nav.links a.current::after {
       width: 100%;
     }
 
@@ -236,96 +265,452 @@
       transition: .3s;
     }
 
-    /* ---------- PAGE HERO ---------- */
-    .page-hero {
+    /* ---------- HERO ---------- */
+    .hero {
       position: relative;
-      padding: 190px 0 90px;
-      background: var(--off-white);
+      height: 100vh;
+      min-height: 640px;
       overflow: hidden;
-      border-bottom: 1px solid var(--line);
     }
 
-    .page-hero::after {
-      content: '';
+    .hero-bg {
       position: absolute;
-      right: -80px;
-      top: -60px;
-      width: 320px;
-      height: 320px;
-      border: 1px solid var(--red);
-      opacity: .18;
-      border-radius: 50%;
+      inset: 0;
+      background: url('assets/hero-bg.jpg') center 30%/cover;
     }
 
-    .page-hero .wrap {
-      position: relative;
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .page-hero .crumb {
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 10, 9, .4) 0%, rgba(15, 10, 9, .18) 42%, rgba(12, 8, 7, .82) 100%);
+    }
+
+    .viewfinder {
+      position: absolute;
+      top: 120px;
+      right: 34px;
+      bottom: 34px;
+      left: 34px;
+      border: 1px solid rgba(255, 255, 255, .0);
+      pointer-events: none;
+    }
+
+    .corner {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border: 1.5px solid rgba(255, 255, 255, .75);
+    }
+
+    .corner.tl {
+      top: 0;
+      left: 0;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .corner.tr {
+      top: 0;
+      right: 0;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .corner.bl {
+      bottom: 0;
+      left: 0;
+      border-right: none;
+      border-top: none;
+    }
+
+    .corner.br {
+      bottom: 0;
+      right: 0;
+      border-left: none;
+      border-top: none;
+    }
+
+    .exif {
+      position: absolute;
+      top: 136px;
+      right: 52px;
+      display: flex;
+      gap: 18px;
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .exif b {
+      color: var(--red-bright);
+      font-weight: 600;
+    }
+
+    .rec {
+      position: absolute;
+      top: 140px;
+      left: 70px;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 11.5px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 26px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      color: rgba(255, 255, 255, .8);
     }
 
-    .page-hero .crumb a:hover {
-      color: var(--red);
+    .rec-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red-bright);
+      animation: pulse 1.8s infinite ease-in-out;
     }
 
-    .page-hero .crumb span {
-      opacity: .5;
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .25;
+      }
     }
 
-    .page-hero h1 {
-      font-size: clamp(36px, 5.2vw, 60px);
-      margin-bottom: 18px;
-    }
-
-    .page-hero p {
-      color: var(--ink-soft);
-      font-size: 16.5px;
-      font-weight: 300;
-      max-width: 520px;
-      line-height: 1.7;
-    }
-
-    .page-hero .count-row {
+    .hero-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 190px;
+      bottom: 90px;
+      z-index: 2;
       display: flex;
-      gap: 40px;
-      margin-top: 46px;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-content .wrap {
+      max-width: 1240px;
+    }
+
+    .hero-content .eyebrow {
+      color: var(--red-bright);
+      margin-bottom: 22px;
+      display: block;
+    }
+
+    .hero-content h1 {
+      font-family: var(--display);
+      font-size: clamp(38px, 6.4vw, 82px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -.01em;
+      line-height: 1.08;
+    }
+
+    .hero-content h1 em {
+      font-style: normal;
+      color: var(--red-bright);
+      font-weight: 800;
+    }
+
+    .hero-sub {
+      color: rgba(255, 255, 255, .78);
+      font-size: 17px;
+      font-weight: 300;
+      max-width: 460px;
+      margin: 26px 0 40px;
+      line-height: 1.6;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
-    .page-hero .count-row div .num {
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      right: 40px;
+      z-index: 2;
+      writing-mode: vertical-rl;
+      color: rgba(255, 255, 255, .6);
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .scroll-cue::after {
+      content: '';
+      width: 1px;
+      height: 60px;
+      background: rgba(255, 255, 255, .4);
+    }
+
+    /* ---------- SECTION GENERIC ---------- */
+    section {
+      padding: 130px 0;
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 70px;
+    }
+
+    .section-head .eyebrow {
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 4vw, 52px);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about {
+      background: var(--off-white);
+    }
+
+    .about .wrap {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-photo {
+      position: relative;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .about-frame {
+      position: absolute;
+      inset: -18px;
+      border: 1px solid var(--red);
+      z-index: -1;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      background: var(--red);
+      color: var(--white);
+      padding: 26px 30px;
+      border-radius: 2px;
+      text-align: center;
+      box-shadow: 0 20px 40px -18px rgba(161, 16, 43, .55);
+    }
+
+    .about-badge .num {
       font-family: var(--serif);
-      font-size: 34px;
-      color: var(--red);
+      font-size: 40px;
       line-height: 1;
     }
 
-    .page-hero .count-row div .cap {
+    .about-badge .cap {
       font-size: 10.5px;
-      letter-spacing: .12em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--ink-soft);
       margin-top: 6px;
+      opacity: .9;
     }
 
-    /* ---------- FILTER + ALBUM GRID ---------- */
-    .albums {
+    .about-text p {
+      color: var(--ink-soft);
+      font-size: 16.5px;
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .about-sign {
+      font-family: poppins;
+      font-style: regular;
+      font-size: 15px;
+      margin-top: 26px;
+      color: var(--red);
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      margin-top: 56px;
+      padding-top: 34px;
+    }
+
+    .stats-bar div {
+      border-left: 1px solid var(--line);
+      padding-left: 22px;
+    }
+
+    .stats-bar div:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .stats-bar .num {
+      font-family: var(--serif);
+      font-size: 38px;
+      color: var(--red);
+    }
+
+    .stats-bar .cap {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services {
       background: var(--white);
-      padding: 90px 0 140px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--line);
+    }
+
+    .service-card {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s ease;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 14, 12, 0) 30%, rgba(15, 10, 9, .88) 100%);
+      z-index: 1;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.07);
+    }
+
+    .service-inner {
+      position: relative;
+      z-index: 2;
+      padding: 34px;
+      color: var(--white);
+      width: 100%;
+    }
+
+    .service-inner .idx {
+      font-size: 11px;
+      letter-spacing: .2em;
+      color: var(--red-bright);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .service-inner h3 {
+      font-size: 27px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .service-inner p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .78);
+      line-height: 1.6;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all .5s ease;
+    }
+
+    .service-card:hover .service-inner p {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 2px;
+    }
+
+    .service-bracket {
+      position: absolute;
+      z-index: 2;
+      width: 18px;
+      height: 18px;
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+
+    .service-card:hover .service-bracket {
+      opacity: 1;
+    }
+
+    .service-bracket.tl {
+      top: 18px;
+      left: 18px;
+      border-top: 1.5px solid var(--red-bright);
+      border-left: 1.5px solid var(--red-bright);
+    }
+
+    .service-bracket.tr {
+      top: 18px;
+      right: 18px;
+      border-top: 1.5px solid var(--red-bright);
+      border-right: 1.5px solid var(--red-bright);
+    }
+
+    /* ---------- PORTFOLIO ---------- */
+    .portfolio {
+      background: var(--off-white);
     }
 
     .filter-row {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 46px;
+      margin-bottom: 50px;
     }
 
     .filter-btn {
@@ -348,307 +733,492 @@
       color: var(--white);
     }
 
-    .album-grid {
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 230px;
+      gap: 14px;
+    }
+
+    .g-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .g-item.tall {
+      grid-row: span 2;
+    }
+
+    .g-item.wide {
+      grid-column: span 2;
+    }
+
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease;
+    }
+
+    .g-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 10, 9, .42);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+
+    .g-item:hover::after {
+      opacity: 1;
+    }
+
+    .g-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .g-tag {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      z-index: 2;
+      color: var(--white);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all .4s ease;
+    }
+
+    .g-item:hover .g-tag {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .g-corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+
+    .g-item:hover .g-corner {
+      opacity: 1;
+    }
+
+    .g-corner.tl {
+      top: 14px;
+      left: 14px;
+      border-top: 1.5px solid #fff;
+      border-left: 1.5px solid #fff;
+    }
+
+    .g-corner.br {
+      bottom: 14px;
+      right: 14px;
+      border-bottom: 1.5px solid #fff;
+      border-right: 1.5px solid #fff;
+    }
+
+    .portfolio-more {
+      text-align: center;
+      margin-top: 56px;
+    }
+
+    /* ---------- TESTIMONIALS (photo tiles) ---------- */
+    .testimonials {
+      background: var(--ink);
+      color: var(--white);
+      position: relative;
+    }
+
+    .testimonials .section-head h2 {
+      color: var(--white);
+    }
+
+    .testimonials .section-head {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .t-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 26px;
     }
 
-    .album-card {
+    .t-card {
       position: relative;
-      aspect-ratio: 4/5;
-      border-radius: 2px;
       overflow: hidden;
-      cursor: pointer;
-      background: var(--blush);
+      border-radius: 10px;
+      min-height: 400px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      background-size: cover;
+      background-position: center;
+      isolation: isolate;
     }
 
-    .album-card img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .8s ease;
-    }
-
-    .album-card::before {
+    .t-card::before {
       content: '';
       position: absolute;
       inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, rgba(10, 7, 6, .55) 0%, rgba(10, 7, 6, .72) 55%, rgba(8, 5, 5, .92) 100%);
+      filter: saturate(.5);
+    }
+
+    .t-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
       z-index: 1;
-      background: linear-gradient(180deg, rgba(20, 14, 12, 0) 40%, rgba(15, 10, 9, .9) 100%);
     }
 
-    .album-card:hover img {
-      transform: scale(1.06);
+    .t-quote-mark {
+      font-family: var(--serif);
+      font-size: 52px;
+      color: rgba(255, 255, 255, .55);
+      line-height: 1;
     }
 
-    .album-tag {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 2;
-      font-size: 10.5px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: rgba(0, 0, 0, .35);
-      backdrop-filter: blur(3px);
-      padding: 7px 12px;
-      border-radius: 20px;
+    .t-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, .5);
     }
 
-    .album-count {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      z-index: 2;
+    .t-name {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 22px;
+      color: rgba(255, 255, 255, .9);
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .t-quote {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, .82);
+      font-weight: 300;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .t-quote.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .t-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 22px;
+      position: relative;
+      z-index: 1;
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, .85);
+      font-weight: 400;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+
+    .t-more-icon {
       width: 34px;
       height: 34px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .16);
-      backdrop-filter: blur(3px);
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 500;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .12);
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s ease, transform .3s ease;
     }
 
-    .album-inner {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-      z-index: 2;
-    }
-
-    .album-inner h3 {
-      color: var(--white);
-      font-size: 24px;
-      margin-bottom: 4px;
-    }
-
-    .album-inner span {
-      font-size: 11.5px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .7);
-    }
-
-    .album-expand {
-      position: absolute;
-      z-index: 2;
-      bottom: 22px;
-      right: 22px;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, .5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 15px;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: all .35s ease;
-    }
-
-    .album-card:hover .album-expand {
-      opacity: 1;
-      transform: translateY(0);
+    .t-card:hover .t-more-icon {
       background: var(--red);
-      border-color: var(--red);
+      transform: translateX(3px);
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ---------- LIGHTBOX ---------- */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 900;
-      background: rgba(12, 8, 7, .97);
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .35s ease, visibility .35s ease;
-    }
-
-    .lightbox.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .lb-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 26px 34px;
-      flex-shrink: 0;
-    }
-
-    .lb-title {
-      color: var(--white);
-    }
-
-    .lb-title .eyebrow {
-      color: var(--red-bright);
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .lb-title h3 {
-      font-size: 24px;
-      color: var(--white);
-    }
-
-    .lb-close {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, .3);
-      background: none;
-      color: var(--white);
-      font-size: 18px;
-      cursor: pointer;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .3s ease;
-    }
-
-    .lb-close:hover {
-      background: var(--red);
-      border-color: var(--red);
-    }
-
-    .lb-stage {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 22px;
-      padding: 0 24px;
-      min-height: 0;
-    }
-
-    .lb-arrow {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      border: 1px solid rgba(255, 255, 255, .3);
-      background: none;
-      color: var(--white);
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .3s ease;
-    }
-
-    .lb-arrow:hover {
-      background: var(--red);
-      border-color: var(--red);
-    }
-
-    .lb-arrow[disabled] {
-      opacity: .25;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .lb-frame {
-      position: relative;
-      max-width: min(880px, 78vw);
-      max-height: 68vh;
-    }
-
-    .lb-frame img {
-      max-width: 100%;
-      max-height: 68vh;
-      width: auto;
-      height: auto;
-      border-radius: 2px;
-      box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7);
-    }
-
-    .lb-bottom {
-      flex-shrink: 0;
-      padding: 22px 34px 30px;
+    .t-note {
       text-align: center;
+      margin-top: 46px;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, .4);
+      letter-spacing: .03em;
     }
 
-    .lb-counter {
-      font-size: 12px;
-      letter-spacing: .14em;
-      color: rgba(255, 255, 255, .55);
-      text-transform: uppercase;
+    /* ---------- CONTACT ---------- */
+    .contact {
+      background: var(--white);
+    }
+
+    .contact .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .contact-info .eyebrow {
+      display: block;
       margin-bottom: 18px;
     }
 
-    .lb-counter b {
-      color: var(--red-bright);
+    .contact-info h2 {
+      font-size: clamp(32px, 4vw, 50px);
+      margin-bottom: 26px;
     }
 
-    .lb-thumbs {
+    .contact-info p {
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 40px;
+      max-width: 440px;
+    }
+
+    .info-line {
       display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
     }
 
-    .lb-thumb {
-      width: 56px;
-      height: 56px;
-      border-radius: 2px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 2px solid transparent;
-      opacity: .5;
-      transition: all .3s ease;
+    .info-line:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-line .lbl {
+      width: 110px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
       flex-shrink: 0;
+      padding-top: 2px;
     }
 
-    .lb-thumb img {
+    .info-line .val {
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .info-line .val a:hover {
+      color: var(--red);
+    }
+
+    .social-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .social-row a {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all .3s ease;
+    }
+
+    .social-row a:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    form.book {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .field {
+      position: relative;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      padding: 12px 2px;
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .3s ease;
     }
 
-    .lb-thumb.active {
-      opacity: 1;
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
       border-color: var(--red);
     }
 
-    .lb-thumb:hover {
-      opacity: 1;
+    .field label {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+      display: block;
     }
 
-    body.lb-lock {
-      overflow: hidden;
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    form.book .btn {
+      margin-top: 12px;
+      align-self: flex-start;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, .6);
+      padding: 70px 0 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 30px;
+      color: var(--white);
+    }
+
+    .footer-logo span {
+      color: var(--red-bright);
+    }
+
+    .footer-tag {
+      font-size: 13px;
+      margin-top: 10px;
+      max-width: 280px;
+      font-weight: 300;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 70px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links h4 {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .85);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--red-bright);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 26px;
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 980px) {
-      .album-grid {
+      .about .wrap {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .about-photo img {
+        height: 420px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .g-item.wide {
+        grid-column: span 1;
+      }
+
+      .t-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact .wrap {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .stats-bar {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .stats-bar div {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+
+      .stats-bar div:first-child {
+        border-top: none;
+        padding-top: 0;
       }
     }
 
@@ -692,44 +1262,32 @@
         display: flex;
       }
 
-      .page-hero {
-        padding: 150px 0 60px;
+      section {
+        padding: 80px 0;
       }
 
-      .albums {
-        padding: 60px 0 90px;
-      }
-
-      .album-grid {
+      .row-2 {
         grid-template-columns: 1fr;
       }
 
-      .lb-stage {
+      .hero-content {
+        padding-bottom: 60px;
+      }
+
+      .exif {
+        display: none;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
+
+      .footer-top {
         flex-direction: column;
-        gap: 14px;
       }
 
-      .lb-frame {
-        max-width: 92vw;
-        max-height: 50vh;
-      }
-
-      .lb-frame img {
-        max-height: 50vh;
-      }
-
-      .lb-arrow {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .lb-arrow.prev {
-        left: 10px;
-      }
-
-      .lb-arrow.next {
-        right: 10px;
+      .footer-links {
+        gap: 40px;
       }
     }
 
@@ -744,7 +1302,15 @@
       }
     }
 
-    /* ---------- PRELOADER (shared) ---------- */
+    .review-role {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .55);
+      margin-top: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- PRELOADER ---------- */
     html.is-loading {
       overflow: hidden;
       height: 100%;
@@ -822,27 +1388,27 @@
     @keyframes preloaderIn {
       0% {
         opacity: 0;
-        transform: scale(.88)
+        transform: scale(.88);
       }
 
       60% {
         opacity: 1;
-        transform: scale(1.02)
+        transform: scale(1.02);
       }
 
       100% {
         opacity: 1;
-        transform: scale(1)
+        transform: scale(1);
       }
     }
 
     @keyframes preloaderBar {
       0% {
-        transform: translateX(-100%)
+        transform: translateX(-100%);
       }
 
       100% {
-        transform: translateX(0%)
+        transform: translateX(0%);
       }
     }
 
@@ -852,6 +1418,7 @@
       transition: opacity .6s ease .8s, visibility .6s ease .8s;
     }
 
+    /* ---------- WHATSAPP FLOAT BUTTON ---------- */
     .whatsapp-float {
       position: fixed;
       right: 22px;
@@ -892,32 +1459,6 @@
         height: 27px;
       }
     }
-
-    footer {
-      background: var(--ink);
-      color: rgba(255, 255, 255, .6);
-      padding: 60px 0 30px;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 10px;
-      font-size: 12px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .footer-back {
-      display: block;
-      margin-bottom: 26px;
-      color: rgba(255, 255, 255, .7);
-      font-size: 13px;
-    }
-
-    .footer-back:hover {
-      color: var(--red-bright);
-    }
   </style>
 </head>
 
@@ -938,62 +1479,409 @@
 
   <header id="siteHeader">
     <div class="wrap">
-      <a href="index.html" class="logo">
-        <img src="assets/chaniru_logo_dark.png" alt="chaniru.arw" class="logo-img">
+      <a href="#home" class="logo">
+        <img src="assets/chaniru_logo_white.png" alt="chaniru.arw" class="logo-img logo-white-img">
+        <img src="assets/chaniru_logo_dark.png" alt="chaniru.arw" class="logo-img logo-dark-img">
       </a>
       <nav class="links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="index.html#reviews">Reviews</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
       </nav>
       <a href="tel:+94761071584" class="nav-call">CALL</a>
       <div class="burger" id="burger"><span></span><span></span><span></span></div>
     </div>
   </header>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-scrim"></div>
+    <div class="viewfinder">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+    </div>
+    <div class="rec"><span class="rec-dot"></span> SHOOTING&nbsp;LIVE</div>
+    <div class="exif"><span>F/1.8</span><span>1/200</span><span>ISO <b>200</b></span></div>
+    <div class="hero-content">
+      <div class="wrap">
+        <span class="eyebrow">Portrait Photographer - Sri Lanka</span>
+        <h1>Chaniru<br><em>Jayawardhana</em></h1>
+        <p class="hero-sub">I'm chaniru.arw - I photograph weddings, engagements and quiet in-between moments across Sri
+          Lanka, one honest frame at a time.</p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn btn-solid">View Portfolio</a>
+          <a href="#contact" class="btn btn-outline">Book a Session</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
     <div class="wrap">
-      <div class="crumb"><a href="index.html">Home</a><span>/</span><span>Full Gallery</span></div>
-      <span class="eyebrow">Every Album</span>
-      <h1 style="margin-top:14px;">The full gallery,<br>album by album.</h1>
-      <p>Each card below is a real session — click it to step inside and browse every frame from that shoot.</p>
-      <div class="count-row">
-        <div>
-          <div class="num" id="statAlbums">0</div>
-          <div class="cap">Albums</div>
+      <div class="about-photo reveal">
+        <div class="about-frame"></div>
+        <img src="assets/PP.jpg" alt="Chaniru Jayawardhana behind the camera">
+        <div class="about-badge">
+          <div class="num">4+</div>
+          <div class="cap">Years Shooting</div>
         </div>
-        <div>
-          <div class="num" id="statPhotos">0</div>
-          <div class="cap">Photos</div>
-        </div>
-        <div>
-          <div class="num">3</div>
-          <div class="cap">Categories</div>
+      </div>
+      <div class="about-text reveal">
+        <span class="eyebrow">About chaniru.arw</span>
+        <h2 style="margin-top:16px; font-size:clamp(30px,4vw,44px);">I shoot for the moments you'll want to feel again,
+          not just see again.</h2>
+        <p style="margin-top:26px;">I'm Chaniru - a Sri Lanka based photographer working under the name
+          <strong>chaniru.arw</strong>. My frames lean toward natural light, real reactions and the small unscripted
+          seconds that usually get missed: a shared glance, a nervous laugh, a hand being held a little tighter.
+        </p>
+        <p>Whether it's a full wedding weekend, an engagement shoot at golden hour, or a quiet portrait session, my
+          approach stays the same - stay close, stay out of the way, and let the day tell its own story.</p>
+        <div class="about-sign">CHANIRU JAYAWARDHANA</div>
+        <div class="stats-bar">
+          <div>
+            <div class="num">10+</div>
+            <div class="cap">Weddings Shot</div>
+          </div>
+          <div>
+            <div class="num">30+</div>
+            <div class="cap">Portraits Sessions</div>
+          </div>
+          <div>
+            <div class="num">100%</div>
+            <div class="cap">Frames, No Filters</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ALBUM GRID -->
-  <section class="albums">
+  <!-- SERVICES -->
+  <section class="services" id="services">
     <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What I Shoot</span>
+        <h2>Services built around your day</h2>
+      </div>
+    </div>
+    <div class="service-grid reveal">
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80"
+          alt="Wedding photography">
+        <span class="service-bracket tl"></span><span class="service-bracket tr"></span>
+        <div class="service-inner">
+          <span class="idx">01 — Weddings</span>
+          <h3>Weddings</h3>
+          <p>Poruwa, church, homecoming or destination - every ceremony and every reaction, documented start to finish.
+          </p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="assets/Engagement_2.jpg" alt="Engagement photography">
+        <span class="service-bracket tl"></span><span class="service-bracket tr"></span>
+        <div class="service-inner">
+          <span class="idx">02 — Engagements</span>
+          <h3>Engagement Sessions</h3>
+          <p>Relaxed, golden-hour shoots at the locations that mean something to you - beach, tea country, or home.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="assets/Portrait_Meleesha_1.jpg" alt="Portrait photography">
+        <span class="service-bracket tl"></span><span class="service-bracket tr"></span>
+        <div class="service-inner">
+          <span class="idx">03 — Portraits</span>
+          <h3>Personal &amp; Casual Shoots</h3>
+          <p>Solo portraits, couple shoots and casual sessions with a natural, editorial feel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Selected Work</span>
+        <h2>Story through my lens</h2>
+      </div>
       <div class="filter-row reveal">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="wedding">Weddings</button>
         <button class="filter-btn" data-filter="engagement">Engagements</button>
         <button class="filter-btn" data-filter="portrait">Portraits</button>
       </div>
-      <div class="album-grid reveal" id="albumGrid"></div>
+      <div class="gallery reveal" id="gallery">
+        <div class="g-item tall" data-cat="engagement">
+          <img src="assets/Engagement.jpg" alt="Engagement shoot">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Engagement - Kegalle</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/Bridal.jpg" alt="Bridal portrait">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Bridal | Dehara</span>
+        </div>
+        <div class="g-item wide" data-cat="wedding">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80"
+            alt="Wedding couple">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Wedding - Kandy</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/portrait_5.jpg" alt="Portrait session - Meleesha">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Meleesha</span>
+        </div>
+
+        <div class="g-item tall" data-cat="portrait">
+          <img src="assets/Casual P.jpg" alt="Casual portrait">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Casual Shoot - Meleesha</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/portrait_2.jpg" alt="Portrait session - Mashi">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Mashi</span>
+        </div>
+        <div class="g-item wide" data-cat="engagement">
+          <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1000&q=80"
+            alt="Engagement couple by the sea">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Engagement - Mirissa</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/portrait.jpg" alt="Portrait session - Senura">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Senura</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/portrait_4.jpg" alt="Bridal portrait">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Bridal | Maheesha</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/portrait_3.jpg" alt="Portrait session - Abhilashi">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Abhilashi</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/portrait_6.jpg" alt="Portrait session - Sehara">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Sehara</span>
+        </div>
+        <div class="g-item" data-cat="portrait">
+          <img src="assets/portrait_7.jpg" alt="Portrait session - Chanuli">
+          <span class="g-corner tl"></span><span class="g-corner br"></span>
+          <span class="g-tag">Portrait - Chanuli</span>
+        </div>
+      </div>
+      <div class="portfolio-more reveal">
+        <a href="gallery.html" class="btn btn-dark">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Kind Words</span>
+        <h2>From the Lovely Clients</h2>
+      </div>
+      <div class="t-grid reveal">
+
+        <div class="t-card" style="background-image:url('assets/portrait_5.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_5.jpg" alt="Yenuli Meleesha">
+          </div>
+          <div class="t-quote clamped">Thank you so much aiya for doing my 21st birthday shoot exactly the way I had it
+            in my mind, and even more beautifully than I imagined. Every single photo is more beautiful than the
+            last. My birthday became so much more special because of those amazing photos. I’m really happy that you
+            did both the photos and videos beautifully for me, exactly how I asked, without any shortcomings or
+            discomfort. Thank you so much for giving me a beautiful memories to make my day special...You put so much
+            effort to make it beautiful.
+            No doubt you are the best photographer I’ve ever had.
+            I'm really happy that I choose you. I highly recommend you to anyone looking best photographer for capturing
+            their beautiful moments.
+
+            Once again Thank you so much aiya and wishing you all the very best for your futuer works.... I'm waiting
+            to work with you again.</div>
+          <div class="t-name">Yenuli Meleesha</div>
+          <div class="review-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div>
+
+        <div class="t-card" style="background-image:url('assets/portrait_7.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_7_1.jpg" alt="Chanuli Janeesha">
+          </div>
+          <div class="t-quote clamped">A huge thank you to you, aiya… I still can’t get over these photos. Every
+            picture made me smile and you captured every little moment so naturally and beautifully. Thank you for
+            making me feel comfortable throughout the shoot and for turning my simple Avurudu idea into something so
+            special. These are memories I’ll always keep close to my heart. I’m honestly so happy I trusted you with
+            this shoot. Wishing you all the success you deserve, and I’m already looking forward to our next shoot
+          </div>
+          <div class="t-name">Chanuli Janeesha</div>
+          <div class="review-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div>
+
+        <div class="t-card" style="background-image:url('assets/Engagement.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/Engagement_2_1.jpg" alt="Nawoda & Supun">
+          </div>
+          <div class="t-quote clamped">Looking through our final gallery was like reliving the magic all over again. The
+            attention to detail was incredible, and every special moment was captured perfectly without feeling forced
+            or overly posed. Highly recommend for any couple looking for a true professional.</div>
+          <div class="t-name">Nawoda &amp; Supun</div>
+          <div class="review-role">Engagement</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div>
+
+        <div class="t-card" style="background-image:url('assets/portrait_9_1.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_9.jpg" alt="Placeholder Client">
+          </div>
+          <div class="t-quote clamped">Chaniru is a fantastic photographer! He knows exactly how to capture the perfect
+            angle and make you feel completely comfortable during the shoot. The quality of the final photos speaks for
+            itself.</div>
+          <div class="t-name">Nethmi Silva</div>
+          <div class="review-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div>
+
+        <div class="t-card" style="background-image:url('assets/portrait_8_1.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_8.jpg" alt="Chrissy Fernando">
+          </div>
+          <div class="t-quote clamped">An absolute joy to work with Chaniru! The shoot was laid back and fun, and the
+            photos turned out beautifully. If you need some fresh portraits and want a genuinely enjoyable experience,
+            book a session immediately with Chaniru.</div>
+          <div class="t-name">Chrissy Fernando</div>
+          <div class="review-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div>
+
+        <div class="t-card" style="background-image:url('assets/portrait_Buddhima_7.jpg');">
+          <div class="t-card-top">
+            <span class="t-quote-mark">&ldquo;</span>
+            <img class="t-avatar" src="assets/portrait_Buddhima_1.jpg" alt="Buddhima Arunodini">
+          </div>
+          <div class="t-quote clamped">I honestly couldn’t be happier with how the shoot turned out! He was able to
+            create exactly what I had in my head. The concept, the vibes, the little details and everything. The final
+            pictures described the vision I had imagined so perfectly, and that made me incredibly happy.
+
+            He was also very cooperative throughout the whole process and always made sure to ask for my thoughts and
+            what I wanted from the shoot. I really appreciated how involved he made me feel in bringing the concept to
+            life.
+
+            I’m beyond happy with the photos and the whole experience. Thank you so much for capturing my vision exactly
+            the way I imagined it! 🤍✨</div>
+          <div class="t-name">Buddhima Arunodini</div>
+          <div class="review-role">Portrait Session</div>
+          <button class="t-more" type="button"><span class="t-more-icon">&#8594;</span> Read More&hellip;</button>
+        </div>
+
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a id="seeMoreBtn" href="reviews.html" class="btn btn-white">See More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Let's talk about your day</h2>
+        <p>Have a date in mind, or just exploring? Send a few details and I'll get back to you within 24 hours with
+          availability and packages.</p>
+
+      </div>
+      <form class="book reveal" id="bookForm" action="https://formsubmit.co/chanirudinsara99az@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry — chaniruarw.lk">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <!-- honeypot field to cut down on spam bots -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row-2">
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input id="name" name="Name" type="text" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone / WhatsApp</label>
+            <input id="phone" name="Phone" type="tel" placeholder="07X XXX XXXX" required>
+          </div>
+        </div>
+        <div class="row-2">
+          <div class="field">
+            <label for="type">Session Type</label>
+            <select id="type" name="Session Type">
+              <option>Wedding</option>
+              <option>Engagement</option>
+              <option>Portrait / Casual Shoot</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Event Date</label>
+            <input id="date" name="Event Date" type="date">
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Tell me about your day</label>
+          <textarea id="message" name="Message" rows="4"
+            placeholder="Location, guest count, anything you'd love captured..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid" id="bookBtn">Send Enquiry</button>
+        <div id="formStatus" style="font-size:13px; color:var(--ink-soft); display:none;"></div>
+      </form>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <a href="index.html" class="footer-back">&larr; Back to chaniru.arw</a>
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><a href="#home"><img src="assets/chaniru_logo_white.png" alt="chaniru.arw"
+                class="footer-logo-img"></a>
+          </div>
+          <div class="footer-tag">Wedding & Portrait photography across Sri Lanka. Honest frames, No filters.</div>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="gallery.html">Full Gallery</a></li>
+              <li><a href="#reviews">Reviews</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+94761071584">Call</a></li>
+              <li><a href="https://instagram.com/chaniru.arw">Instagram</a></li>
+              <li><a href="https://facebook.com/chaniru.arw">Facebook</a></li>
+              <li><a href="https://chaniru-arw.client-gallery.com/">Client Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="footer-bottom">
         <span>© <span id="year"></span> chaniru.arw | All rights reserved.</span>
         <span>Sri Lanka</span>
@@ -1001,34 +1889,13 @@
     </div>
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lb-top">
-      <div class="lb-title">
-        <span class="eyebrow" id="lbCat">Album</span>
-        <h3 id="lbTitle">Album name</h3>
-      </div>
-      <button class="lb-close" id="lbClose" aria-label="Close gallery">&#10005;</button>
-    </div>
-    <div class="lb-stage">
-      <button class="lb-arrow prev" id="lbPrev" aria-label="Previous photo">&#8592;</button>
-      <div class="lb-frame">
-        <img id="lbImage" src="" alt="">
-      </div>
-      <button class="lb-arrow next" id="lbNext" aria-label="Next photo">&#8594;</button>
-    </div>
-    <div class="lb-bottom">
-      <div class="lb-counter"><b id="lbIndex">1</b> / <span id="lbTotal">1</span></div>
-      <div class="lb-thumbs" id="lbThumbs"></div>
-    </div>
-  </div>
-
   <script>
     // ---------- PRELOADER ----------
     (function () {
       const html = document.documentElement;
       const preloader = document.getElementById('preloader');
       let done = false;
+
       function hidePreloader() {
         if (done) return;
         done = true;
@@ -1036,7 +1903,11 @@
         preloader.classList.add('preloader-hide');
         setTimeout(() => preloader.remove(), 1500);
       }
-      const minTime = new Promise(res => setTimeout(res, 700));
+
+      // Hide once the whole page (incl. images) has loaded,
+      // with a minimum show time so the animation isn't cut short,
+      // and a safety timeout in case something never fires 'load'.
+      const minTime = new Promise(res => setTimeout(res, 900));
       const pageLoad = new Promise(res => {
         if (document.readyState === 'complete') res();
         else window.addEventListener('load', res);
@@ -1048,300 +1919,85 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const header = document.getElementById('siteHeader');
-    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
 
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-    /* =========================================================
-       ALBUM DATA
-       Each album is one real shoot. "images" holds every photo
-       in that session — add more filenames to the array to grow
-       an album; the lightbox and counters update automatically.
-       ========================================================= */
-    const albums = [
-      {
-        title: "Engagement — Nawoda & Supun", category: "engagement", images: [
-          "assets/Eng_SupunNawo_1.jpg",
-          "assets/Eng_SupunNawo_2.jpg",
-          "assets/Eng_SupunNawo_3.jpg",
-          "assets/Eng_SupunNawo_4.jpg",
-          "assets/Eng_SupunNawo_5.jpg",
-          "assets/Eng_SupunNawo_6.jpg",
-        ]
-      },
-      {
-        title: "Portrait — Meleesha", category: "portrait", images: [
-          "assets/Portrait_Meleesha_1.jpg",
-          "assets/Portrait_Meleesha_2.jpg",
-          "assets/Portrait_Meleesha_3.jpg",
-          "assets/Portrait_Meleesha_4.jpg",
-          "assets/Portrait_Meleesha_5.jpg",
-          "assets/Portrait_Meleesha_6.jpg",
-          "assets/Portrait_Meleesha_7.jpg",
-          "assets/Portrait_Meleesha_8.jpg",
-          "assets/Portrait_Meleesha_9.jpg",
-          "assets/Portrait_Meleesha_10.jpg"
-        ]
-      },
-      {
-        title: "Portrait — Chanuli", category: "portrait", images: [
-          "assets/Portrait_Chanuli_1.jpg",
-          "assets/Portrait_Chanuli_2.jpg",
-          "assets/Portrait_Chanuli_3.jpg",
-          "assets/Portrait_Chanuli_4.jpg",
-          "assets/Portrait_Chanuli_5.jpg",
-          "assets/Portrait_Chanuli_6.jpg",
-        ]
-      },
-      {
-        title: "Bridal Portrait — Dehara", category: "portrait", images: [
-          "assets/Bridal_Dehara_1.jpg",
-          "assets/Bridal_Dehara_2.jpg",
-          "assets/Bridal_Dehara_3.jpg",
-          "assets/Bridal_Dehara_4.jpg",
-        ]
-      },
-      {
-        title: "Portrait — Mashi", category: "portrait", images: [
-          "assets/Portrait_Mashi_1.jpg",
-          "assets/Portrait_Mashi_2.jpg",
-          "assets/Portrait_Mashi_3.jpg",
-          "assets/Portrait_Mashi_4.jpg",
-          "assets/Portrait_Mashi_5.jpg",
-        ]
-      },
+    // scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
 
+    // enquiry form -> FormSubmit (emails chanirudinsara99az@gmail.com)
+    const bookForm = document.getElementById('bookForm');
+    const bookBtn = document.getElementById('bookBtn');
+    const formStatus = document.getElementById('formStatus');
+    if (bookForm) {
+      bookForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        bookBtn.disabled = true;
+        bookBtn.textContent = 'Sending…';
+        formStatus.style.display = 'block';
+        formStatus.textContent = '';
 
-      {
-        title: "Casual Shoot — Meleesha", category: "portrait", images: [
-          "assets/Casual_Meleesha_1.jpg",
-          "assets/Casual_Meleesha_2.jpg",
-          "assets/Casual_Meleesha_3.jpg",
-          "assets/Casual_Meleesha_4.jpg",
-          "assets/Casual_Meleesha_5.jpg",
-          "assets/Casual_Meleesha_6.jpg",
-          "assets/Casual_Meleesha_7.jpg",
-          "assets/Casual_Meleesha_8.jpg",
-          "assets/Casual_Meleesha_9.jpg",
-          "assets/Casual_Meleesha_10.jpg"
-        ]
-      },
+        const data = new FormData(bookForm);
+        fetch(bookForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(res => {
+            if (!res.ok) throw new Error('Network response was not ok');
+            return res.json();
+          })
+          .then(() => {
+            bookForm.reset();
+            bookBtn.textContent = 'Send Enquiry';
+            bookBtn.disabled = false;
+            formStatus.style.color = 'var(--red)';
+            formStatus.textContent = "Thanks - your enquiry is on its way. I'll reply within 24 hours.";
+          })
+          .catch(() => {
+            bookBtn.textContent = 'Send Enquiry';
+            bookBtn.disabled = false;
+            formStatus.style.color = '#b3122a';
+            formStatus.textContent = 'Something went wrong sending that. Please try again, or call/WhatsApp 076 107 1584 directly.';
+          });
+      });
+    }
 
-
-      {
-        title: "Portrait — Senura", category: "portrait", images: [
-          "assets/Portrait_Senura_1.jpg",
-          "assets/Portrait_Senura_2.jpg",
-        ]
-      },
-      {
-        title: "Bridal Portrait — Maheesha", category: "portrait", images: [
-          "assets/Portrait_Maheesha_1.jpg",
-          "assets/Portrait_Maheesha_2.jpg",
-          "assets/Portrait_Maheesha_3.jpg",
-          "assets/Portrait_Maheesha_4.jpg",
-          "assets/Portrait_Maheesha_5.jpg",
-          "assets/Portrait_Maheesha_6.jpg",
-        ]
-      },
-      {
-        title: "Portrait — Abhilashi", category: "portrait", images: [
-          "assets/Portrait_Abhilashi_1.jpg",
-          "assets/Portrait_Abhilashi_2.jpg",
-          "assets/Portrait_Abhilashi_3.jpg",
-          "assets/Portrait_Abhilashi_4.jpg",
-        ]
-      },
-      {
-        title: "Portrait — Sehara", category: "portrait", images: [
-          "assets/Portrait_Sehara_1.jpg",
-          "assets/Portrait_Sehara_2.jpg",
-          "assets/Portrait_Sehara_3.jpg",
-          "assets/Portrait_Sehara_4.jpg",
-          "assets/Portrait_Sehara_5.jpg",
-        ]
-      },
-
-
-      {
-        title: "Portrait — Buddhima", category: "portrait", images: [
-          "assets/portrait_Buddhima_1.jpg",
-          "assets/portrait_Buddhima_2.jpg",
-          "assets/portrait_Buddhima_3.jpg",
-          "assets/portrait_Buddhima_4.gif",
-          "assets/portrait_Buddhima_5.jpg",
-          "assets/portrait_Buddhima_6.jpg",
-          "assets/portrait_Buddhima_7.jpg",
-          "assets/portrait_Buddhima_8.jpg",
-          "assets/portrait_Buddhima_9.jpg",
-          "assets/portrait_Buddhima_10.jpg",
-
-        ]
-      },
-
-      {
-        title: "Portrait — Vinuki", category: "portrait", images: [
-          "assets/StPortrait_Vinuki_1.jpg",
-          "assets/StPortrait_Vinuki_2.jpg",
-          "assets/StPortrait_Vinuki_3.jpg",
-          "assets/StPortrait_Vinuki_4.jpg",
-          "assets/StPortrait_Vinuki_5.jpg",
-          "assets/StPortrait_Vinuki_6.jpg",
-          "assets/StPortrait_Vinuki_7.jpg",
-          "assets/StPortrait_Vinuki_8.jpg",
-        ]
-      },
-
-      {
-        title: "Portrait — Vinuki", category: "portrait", images: [
-          "assets/Portrait_Vinuki_1.jpg",
-          "assets/Portrait_Vinuki_2.jpg",
-          "assets/Portrait_Vinuki_3.jpg",
-          "assets/Portrait_Vinuki_4.jpg",
-          "assets/Portrait_Vinuki_5.jpg",
-          "assets/Portrait_Vinuki_6.jpg",
-          "assets/Portrait_Vinuki_7.jpg",
-          "assets/Portrait_Vinuki_8.jpg",
-          "assets/Portrait_Vinuki_9.jpg",
-          "assets/Portrait_Vinuki_10.jpg"
-        ]
-      },
-      /*{
-        title: "Wedding — Kandy", category: "wedding", images: [
-          "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=80",
-          "assets/Wedding-Kandy-2.jpg",
-          "assets/Wedding-Kandy-3.jpg",
-          "assets/Wedding-Kandy-4.jpg",
-        ]
-      },
-      {
-        title: "Engagement — Mirissa", category: "engagement", images: [
-          "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1400&q=80",
-          "assets/Engagement-Mirissa-2.jpg",
-          "assets/Engagement-Mirissa-3.jpg",
-          "assets/Engagement-Mirissa-4.jpg",
-        ]
-      },*/
-    ];
-
-    const catLabel = { wedding: "Wedding", engagement: "Engagement", portrait: "Portrait" };
-
-    // ---------- BUILD ALBUM GRID ----------
-    const grid = document.getElementById('albumGrid');
-    albums.forEach((album, i) => {
-      const card = document.createElement('div');
-      card.className = 'album-card';
-      card.dataset.cat = album.category;
-      card.dataset.index = i;
-      card.innerHTML = `
-        <img src="${album.images[0]}" alt="${album.title}">
-        <span class="album-tag">${catLabel[album.category]}</span>
-        <span class="album-count">${album.images.length}</span>
-        <div class="album-inner">
-          <h3>${album.title.split('—')[0].trim()}</h3>
-          <span>${album.title.includes('—') ? album.title.split('—')[1].trim() : ''}</span>
-        </div>
-        <span class="album-expand">&#8599;</span>
-      `;
-      card.addEventListener('click', () => openLightbox(i));
-      grid.appendChild(card);
-    });
-
-    document.getElementById('statAlbums').textContent = albums.length;
-    document.getElementById('statPhotos').textContent = albums.reduce((n, a) => n + a.images.length, 0);
-
-    // ---------- FILTER ----------
+    // portfolio filter
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const gItems = document.querySelectorAll('.g-item');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const f = btn.dataset.filter;
-        document.querySelectorAll('.album-card').forEach(card => {
-          card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+        gItems.forEach(item => {
+          item.style.display = (f === 'all' || item.dataset.cat === f) ? '' : 'none';
         });
       });
     });
-
-    // ---------- LIGHTBOX ----------
-    const lightbox = document.getElementById('lightbox');
-    const lbImage = document.getElementById('lbImage');
-    const lbTitle = document.getElementById('lbTitle');
-    const lbCat = document.getElementById('lbCat');
-    const lbIndex = document.getElementById('lbIndex');
-    const lbTotal = document.getElementById('lbTotal');
-    const lbThumbs = document.getElementById('lbThumbs');
-    const lbPrev = document.getElementById('lbPrev');
-    const lbNext = document.getElementById('lbNext');
-    const lbClose = document.getElementById('lbClose');
-
-    let currentAlbum = 0;
-    let currentPhoto = 0;
-
-    function openLightbox(albumIndex) {
-      currentAlbum = albumIndex;
-      currentPhoto = 0;
-      renderLightbox();
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('lb-lock');
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('lb-lock');
-    }
-
-    function renderLightbox() {
-      const album = albums[currentAlbum];
-      const images = album.images;
-      lbCat.textContent = catLabel[album.category];
-      lbTitle.textContent = album.title;
-      lbImage.src = images[currentPhoto];
-      lbImage.alt = album.title + ' — photo ' + (currentPhoto + 1);
-      lbIndex.textContent = currentPhoto + 1;
-      lbTotal.textContent = images.length;
-
-      lbPrev.disabled = currentPhoto === 0;
-      lbNext.disabled = currentPhoto === images.length - 1;
-
-      lbThumbs.innerHTML = '';
-      if (images.length > 1) {
-        images.forEach((src, i) => {
-          const t = document.createElement('div');
-          t.className = 'lb-thumb' + (i === currentPhoto ? ' active' : '');
-          t.innerHTML = `<img src="${src}" alt="">`;
-          t.addEventListener('click', () => { currentPhoto = i; renderLightbox(); });
-          lbThumbs.appendChild(t);
-        });
-      }
-    }
-
-    lbPrev.addEventListener('click', () => { if (currentPhoto > 0) { currentPhoto--; renderLightbox(); } });
-    lbNext.addEventListener('click', () => {
-      const total = albums[currentAlbum].images.length;
-      if (currentPhoto < total - 1) { currentPhoto++; renderLightbox(); }
+    // testimonial "Read More" toggle
+    document.querySelectorAll('.t-more').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.t-card');
+        const text = card.querySelector('.t-quote');
+        const isClamped = text.classList.contains('clamped');
+        text.classList.toggle('clamped', !isClamped);
+        btn.innerHTML = isClamped
+          ? '<span class="t-more-icon">&#8593;</span> Show Less'
+          : '<span class="t-more-icon">&#8594;</span> Read More&hellip;';
+      });
     });
-    lbClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') lbPrev.click();
-      if (e.key === 'ArrowRight') lbNext.click();
-    });
-
-    // scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => io.observe(el));
   </script>
 </body>
 
