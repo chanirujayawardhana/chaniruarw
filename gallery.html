@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Gallery | Chaniru Jayawardhana</title>
+  <meta name="description"
+    content="Browse the full portfolio of chaniru.arw — weddings, engagements and portrait sessions across Sri Lanka, organised by album.">
+  <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #fbf7f4;
+      --ink: #1c1512;
+      --ink-soft: #5a4f4a;
+      --red: #a1102b;
+      --red-bright: #c4193b;
+      --blush: #f4e6e3;
+      --line: rgba(28, 21, 18, 0.14);
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'Jost', sans-serif;
+      --display: 'Poppins', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 500;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border: 1px solid var(--ink);
+      border-radius: 2px;
+      transition: all .35s ease;
+      cursor: pointer;
+      background: none;
+    }
+
+    .btn-solid {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    .btn-solid:hover {
+      background: var(--red-bright);
+      border-color: var(--red-bright);
+    }
+
+    .btn-dark {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .btn-dark:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    /* ---------- NAV (shared with main site) ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 500;
+      padding: 18px 0;
+      background: var(--white);
+      box-shadow: 0 1px 0 var(--line);
+      transition: padding .3s ease, box-shadow .3s ease;
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    nav.links {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+    nav.links a {
+      font-size: 12.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--ink-soft);
+      position: relative;
+      padding-bottom: 4px;
+      transition: color .3s ease;
+    }
+
+    nav.links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 0;
+      background: var(--red);
+      transition: width .3s ease;
+    }
+
+    nav.links a:hover {
+      color: var(--ink);
+    }
+
+    nav.links a:hover::after {
+      width: 100%;
+    }
+
+    nav.links a.current {
+      color: var(--red);
+    }
+
+    nav.links a.current::after {
+      width: 100%;
+    }
+
+    .nav-call {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      letter-spacing: .08em;
+      color: var(--ink);
+      font-weight: 500;
+      border: 1px solid var(--ink);
+      padding: 10px 18px;
+      border-radius: 2px;
+      transition: all .3s ease;
+    }
+
+    .nav-call:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    header.scrolled {
+      padding: 12px 0;
+      box-shadow: 0 2px 10px rgba(28, 21, 18, .08);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 600;
+    }
+
+    .burger span {
+      width: 26px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: .3s;
+    }
+
+    /* ---------- PAGE HERO ---------- */
+    .page-hero {
+      position: relative;
+      padding: 190px 0 90px;
+      background: var(--off-white);
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -60px;
+      width: 320px;
+      height: 320px;
+      border: 1px solid var(--red);
+      opacity: .18;
+      border-radius: 50%;
+    }
+
+    .page-hero .wrap {
+      position: relative;
+    }
+
+    .page-hero .crumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 26px;
+    }
+
+    .page-hero .crumb a:hover {
+      color: var(--red);
+    }
+
+    .page-hero .crumb span {
+      opacity: .5;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(36px, 5.2vw, 60px);
+      margin-bottom: 18px;
+    }
+
+    .page-hero p {
+      color: var(--ink-soft);
+      font-size: 16.5px;
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .page-hero .count-row {
+      display: flex;
+      gap: 40px;
+      margin-top: 46px;
+      flex-wrap: wrap;
+    }
+
+    .page-hero .count-row div .num {
+      font-family: var(--serif);
+      font-size: 34px;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .page-hero .count-row div .cap {
+      font-size: 10.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 6px;
+    }
+
+    /* ---------- FILTER + ALBUM GRID ---------- */
+    .albums {
+      background: var(--white);
+      padding: 90px 0 140px;
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 46px;
+    }
+
+    .filter-btn {
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      cursor: pointer;
+      background: var(--white);
+      color: var(--ink-soft);
+      transition: all .3s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .album-card {
+      position: relative;
+      aspect-ratio: 4/5;
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--blush);
+    }
+
+    .album-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s ease;
+    }
+
+    .album-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(20, 14, 12, 0) 40%, rgba(15, 10, 9, .9) 100%);
+    }
+
+    .album-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .album-tag {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: rgba(0, 0, 0, .35);
+      backdrop-filter: blur(3px);
+      padding: 7px 12px;
+      border-radius: 20px;
+    }
+
+    .album-count {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 2;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .16);
+      backdrop-filter: blur(3px);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .album-inner {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+    }
+
+    .album-inner h3 {
+      color: var(--white);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .album-inner span {
+      font-size: 11.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .album-expand {
+      position: absolute;
+      z-index: 2;
+      bottom: 22px;
+      right: 22px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 15px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all .35s ease;
+    }
+
+    .album-card:hover .album-expand {
+      opacity: 1;
+      transform: translateY(0);
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- LIGHTBOX ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: rgba(12, 8, 7, .97);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lb-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 34px;
+      flex-shrink: 0;
+    }
+
+    .lb-title {
+      color: var(--white);
+    }
+
+    .lb-title .eyebrow {
+      color: var(--red-bright);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .lb-title h3 {
+      font-size: 24px;
+      color: var(--white);
+    }
+
+    .lb-close {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .3);
+      background: none;
+      color: var(--white);
+      font-size: 18px;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s ease;
+    }
+
+    .lb-close:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .lb-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 0 24px;
+      min-height: 0;
+    }
+
+    .lb-arrow {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, .3);
+      background: none;
+      color: var(--white);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s ease;
+    }
+
+    .lb-arrow:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .lb-arrow[disabled] {
+      opacity: .25;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .lb-frame {
+      position: relative;
+      max-width: min(880px, 78vw);
+      max-height: 68vh;
+    }
+
+    .lb-frame img {
+      max-width: 100%;
+      max-height: 68vh;
+      width: auto;
+      height: auto;
+      border-radius: 2px;
+      box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7);
+    }
+
+    .lb-bottom {
+      flex-shrink: 0;
+      padding: 22px 34px 30px;
+      text-align: center;
+    }
+
+    .lb-counter {
+      font-size: 12px;
+      letter-spacing: .14em;
+      color: rgba(255, 255, 255, .55);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .lb-counter b {
+      color: var(--red-bright);
+    }
+
+    .lb-thumbs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .lb-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: .5;
+      transition: all .3s ease;
+      flex-shrink: 0;
+    }
+
+    .lb-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lb-thumb.active {
+      opacity: 1;
+      border-color: var(--red);
+    }
+
+    .lb-thumb:hover {
+      opacity: 1;
+    }
+
+    body.lb-lock {
+      overflow: hidden;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 980px) {
+      .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .wrap {
+        padding: 0 24px;
+      }
+
+      nav.links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 78%;
+        max-width: 320px;
+        background: var(--off-white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 40px;
+        gap: 28px;
+        transform: translateX(100%);
+        transition: transform .45s ease;
+        z-index: 550;
+      }
+
+      nav.links.open {
+        transform: translateX(0);
+      }
+
+      nav.links a {
+        color: var(--ink) !important;
+        font-size: 15px;
+      }
+
+      .nav-call {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .page-hero {
+        padding: 150px 0 60px;
+      }
+
+      .albums {
+        padding: 60px 0 90px;
+      }
+
+      .album-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lb-stage {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .lb-frame {
+        max-width: 92vw;
+        max-height: 50vh;
+      }
+
+      .lb-frame img {
+        max-height: 50vh;
+      }
+
+      .lb-arrow {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .lb-arrow.prev {
+        left: 10px;
+      }
+
+      .lb-arrow.next {
+        right: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ---------- PRELOADER (shared) ---------- */
+    html.is-loading {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--off-white);
+    }
+
+    #preloader::before,
+    #preloader::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 51%;
+      background: var(--off-white);
+      z-index: 1;
+      transition: transform .8s cubic-bezier(.76, 0, .24, 1);
+      transition-delay: .15s;
+    }
+
+    #preloader::before {
+      top: 0;
+    }
+
+    #preloader::after {
+      bottom: 0;
+    }
+
+    #preloader.preloader-hide::before {
+      transform: translateY(-100%);
+    }
+
+    #preloader.preloader-hide::after {
+      transform: translateY(100%);
+    }
+
+    .preloader-logo {
+      position: relative;
+      z-index: 2;
+      width: 150px;
+      max-width: 46vw;
+      opacity: 0;
+      transform: scale(.88);
+      animation: preloaderIn 1.1s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    .preloader-bar {
+      position: absolute;
+      z-index: 2;
+      bottom: 14%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130px;
+      height: 1px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .preloader-bar span {
+      position: absolute;
+      inset: 0;
+      background: var(--red);
+      transform: translateX(-100%);
+      animation: preloaderBar 1.3s cubic-bezier(.65, 0, .35, 1) .2s forwards;
+    }
+
+    @keyframes preloaderIn {
+      0% {
+        opacity: 0;
+        transform: scale(.88)
+      }
+
+      60% {
+        opacity: 1;
+        transform: scale(1.02)
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    @keyframes preloaderBar {
+      0% {
+        transform: translateX(-100%)
+      }
+
+      100% {
+        transform: translateX(0%)
+      }
+    }
+
+    #preloader.preloader-hide {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .6s ease .8s, visibility .6s ease .8s;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 800;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, .3);
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--white);
+    }
+
+    @media (max-width: 640px) {
+      .whatsapp-float {
+        right: 16px;
+        bottom: 16px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .whatsapp-float svg {
+        width: 27px;
+        height: 27px;
+      }
+    }
+
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, .6);
+      padding: 60px 0 30px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-back {
+      display: block;
+      margin-bottom: 26px;
+      color: rgba(255, 255, 255, .7);
+      font-size: 13px;
+    }
+
+    .footer-back:hover {
+      color: var(--red-bright);
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="https://wa.me/94761071584" class="whatsapp-float" target="_blank" rel="noopener"
+    aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.696 4.61 1.897 6.484L4 29l7.73-1.865A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm6.994 16.99c-.29.816-1.68 1.57-2.317 1.646-.593.07-1.35.099-2.176-.137-.5-.145-1.144-.362-1.972-.71-3.47-1.498-5.735-4.987-5.909-5.22-.174-.234-1.42-1.888-1.42-3.602s.905-2.556 1.226-2.907c.32-.35.697-.438.93-.438.232 0 .465.002.668.012.214.01.502-.081.785.599.29.696.986 2.41 1.073 2.585.087.174.145.38.029.613-.116.234-.174.38-.348.585-.174.204-.365.456-.522.612-.174.174-.355.363-.153.71.203.35.902 1.487 1.938 2.408 1.332 1.188 2.456 1.556 2.805 1.73.348.174.552.146.756-.087.203-.234.87-1.013 1.103-1.362.232-.35.465-.29.784-.174.32.116 2.032.958 2.38 1.132.348.174.58.262.667.408.087.146.087.845-.203 1.661z" />
+    </svg>
+  </a>
+
+  <div id="preloader" aria-hidden="true">
+    <img src="assets/chaniru_logo_dark.png" alt="chaniru.arw" class="preloader-logo">
+    <div class="preloader-bar"><span></span></div>
+  </div>
+
+  <header id="siteHeader">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <img src="assets/chaniru_logo_dark.png" alt="chaniru.arw" class="logo-img">
+      </a>
+      <nav class="links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="tel:+94761071584" class="nav-call">CALL</a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a><span>/</span><span>Full Gallery</span></div>
+      <span class="eyebrow">Every Album</span>
+      <h1 style="margin-top:14px;">The full gallery,<br>album by album.</h1>
+      <p>Each card below is a real session — click it to step inside and browse every frame from that shoot.</p>
+      <div class="count-row">
+        <div>
+          <div class="num" id="statAlbums">0</div>
+          <div class="cap">Albums</div>
+        </div>
+        <div>
+          <div class="num" id="statPhotos">0</div>
+          <div class="cap">Photos</div>
+        </div>
+        <div>
+          <div class="num">3</div>
+          <div class="cap">Categories</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALBUM GRID -->
+  <section class="albums">
+    <div class="wrap">
+      <div class="filter-row reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="wedding">Weddings</button>
+        <button class="filter-btn" data-filter="engagement">Engagements</button>
+        <button class="filter-btn" data-filter="portrait">Portraits</button>
+      </div>
+      <div class="album-grid reveal" id="albumGrid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a href="index.html" class="footer-back">&larr; Back to chaniru.arw</a>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> chaniru.arw | All rights reserved.</span>
+        <span>Sri Lanka</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lb-top">
+      <div class="lb-title">
+        <span class="eyebrow" id="lbCat">Album</span>
+        <h3 id="lbTitle">Album name</h3>
+      </div>
+      <button class="lb-close" id="lbClose" aria-label="Close gallery">&#10005;</button>
+    </div>
+    <div class="lb-stage">
+      <button class="lb-arrow prev" id="lbPrev" aria-label="Previous photo">&#8592;</button>
+      <div class="lb-frame">
+        <img id="lbImage" src="" alt="">
+      </div>
+      <button class="lb-arrow next" id="lbNext" aria-label="Next photo">&#8594;</button>
+    </div>
+    <div class="lb-bottom">
+      <div class="lb-counter"><b id="lbIndex">1</b> / <span id="lbTotal">1</span></div>
+      <div class="lb-thumbs" id="lbThumbs"></div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- PRELOADER ----------
+    (function () {
+      const html = document.documentElement;
+      const preloader = document.getElementById('preloader');
+      let done = false;
+      function hidePreloader() {
+        if (done) return;
+        done = true;
+        html.classList.remove('is-loading');
+        preloader.classList.add('preloader-hide');
+        setTimeout(() => preloader.remove(), 1500);
+      }
+      const minTime = new Promise(res => setTimeout(res, 700));
+      const pageLoad = new Promise(res => {
+        if (document.readyState === 'complete') res();
+        else window.addEventListener('load', res);
+      });
+      Promise.all([minTime, pageLoad]).then(hidePreloader);
+      setTimeout(hidePreloader, 6000);
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    /* =========================================================
+       ALBUM DATA
+       Each album is one real shoot. "images" holds every photo
+       in that session — add more filenames to the array to grow
+       an album; the lightbox and counters update automatically.
+       ========================================================= */
+    const albums = [
+      {
+        title: "Engagement — Nawoda & Supun", category: "engagement", images: [
+          "assets/Eng_SupunNawo_1.jpg",
+          "assets/Eng_SupunNawo_2.jpg",
+          "assets/Eng_SupunNawo_3.jpg",
+          "assets/Eng_SupunNawo_4.jpg",
+          "assets/Eng_SupunNawo_5.jpg",
+          "assets/Eng_SupunNawo_6.jpg",
+        ]
+      },
+      {
+        title: "Portrait — Meleesha", category: "portrait", images: [
+          "assets/Portrait_Meleesha_1.jpg",
+          "assets/Portrait_Meleesha_2.jpg",
+          "assets/Portrait_Meleesha_3.jpg",
+          "assets/Portrait_Meleesha_4.jpg",
+          "assets/Portrait_Meleesha_5.jpg",
+          "assets/Portrait_Meleesha_6.jpg",
+          "assets/Portrait_Meleesha_7.jpg",
+          "assets/Portrait_Meleesha_8.jpg",
+          "assets/Portrait_Meleesha_9.jpg",
+          "assets/Portrait_Meleesha_10.jpg"
+        ]
+      },
+      {
+        title: "Portrait — Chanuli", category: "portrait", images: [
+          "assets/Portrait_Chanuli_1.jpg",
+          "assets/Portrait_Chanuli_2.jpg",
+          "assets/Portrait_Chanuli_3.jpg",
+          "assets/Portrait_Chanuli_4.jpg",
+          "assets/Portrait_Chanuli_5.jpg",
+          "assets/Portrait_Chanuli_6.jpg",
+        ]
+      },
+      {
+        title: "Bridal Portrait — Dehara", category: "portrait", images: [
+          "assets/Bridal_Dehara_1.jpg",
+          "assets/Bridal_Dehara_2.jpg",
+          "assets/Bridal_Dehara_3.jpg",
+          "assets/Bridal_Dehara_4.jpg",
+        ]
+      },
+      {
+        title: "Portrait — Mashi", category: "portrait", images: [
+          "assets/Portrait_Mashi_1.jpg",
+          "assets/Portrait_Mashi_2.jpg",
+          "assets/Portrait_Mashi_3.jpg",
+          "assets/Portrait_Mashi_4.jpg",
+          "assets/Portrait_Mashi_5.jpg",
+        ]
+      },
+
+
+      {
+        title: "Casual Shoot — Meleesha", category: "portrait", images: [
+          "assets/Casual_Meleesha_1.jpg",
+          "assets/Casual_Meleesha_2.jpg",
+          "assets/Casual_Meleesha_3.jpg",
+          "assets/Casual_Meleesha_4.jpg",
+          "assets/Casual_Meleesha_5.jpg",
+          "assets/Casual_Meleesha_6.jpg",
+          "assets/Casual_Meleesha_7.jpg",
+          "assets/Casual_Meleesha_8.jpg",
+          "assets/Casual_Meleesha_9.jpg",
+          "assets/Casual_Meleesha_10.jpg"
+        ]
+      },
+
+
+      {
+        title: "Portrait — Senura", category: "portrait", images: [
+          "assets/Portrait_Senura_1.jpg",
+          "assets/Portrait_Senura_2.jpg",
+        ]
+      },
+      {
+        title: "Bridal Portrait — Maheesha", category: "portrait", images: [
+          "assets/Portrait_Maheesha_1.jpg",
+          "assets/Portrait_Maheesha_2.jpg",
+          "assets/Portrait_Maheesha_3.jpg",
+          "assets/Portrait_Maheesha_4.jpg",
+          "assets/Portrait_Maheesha_5.jpg",
+          "assets/Portrait_Maheesha_6.jpg",
+        ]
+      },
+      {
+        title: "Portrait — Abhilashi", category: "portrait", images: [
+          "assets/Portrait_Abhilashi_1.jpg",
+          "assets/Portrait_Abhilashi_2.jpg",
+          "assets/Portrait_Abhilashi_3.jpg",
+          "assets/Portrait_Abhilashi_4.jpg",
+        ]
+      },
+      {
+        title: "Portrait — Sehara", category: "portrait", images: [
+          "assets/Portrait_Sehara_1.jpg",
+          "assets/Portrait_Sehara_2.jpg",
+          "assets/Portrait_Sehara_3.jpg",
+          "assets/Portrait_Sehara_4.jpg",
+          "assets/Portrait_Sehara_5.jpg",
+        ]
+      },
+
+
+      {
+        title: "Portrait — Buddhima", category: "portrait", images: [
+          "assets/Portrait_Buddhima_1.jpg",
+          "assets/Portrait_Buddhima_2.jpg",
+          "assets/Portrait_Buddhima_3.jpg",
+          "assets/Portrait_Buddhima_4.gif",
+          "assets/Portrait_Buddhima_5.jpg",
+          "assets/Portrait_Buddhima_6.jpg",
+          "assets/Portrait_Buddhima_7.jpg",
+          "assets/Portrait_Buddhima_8.jpg",
+          "assets/Portrait_Buddhima_9.jpg",
+          "assets/Portrait_Buddhima_10.jpg",
+
+        ]
+      },
+
+      {
+        title: "Portrait — Vinuki", category: "portrait", images: [
+          "assets/StPortrait_Vinuki_1.jpg",
+          "assets/StPortrait_Vinuki_2.jpg",
+          "assets/StPortrait_Vinuki_3.jpg",
+          "assets/StPortrait_Vinuki_4.jpg",
+          "assets/StPortrait_Vinuki_5.jpg",
+          "assets/StPortrait_Vinuki_6.jpg",
+          "assets/StPortrait_Vinuki_7.jpg",
+          "assets/StPortrait_Vinuki_8.jpg",
+        ]
+      },
+
+      {
+        title: "Portrait — Vinuki", category: "portrait", images: [
+          "assets/Portrait_Vinuki_1.jpg",
+          "assets/Portrait_Vinuki_2.jpg",
+          "assets/Portrait_Vinuki_3.jpg",
+          "assets/Portrait_Vinuki_4.jpg",
+          "assets/Portrait_Vinuki_5.jpg",
+          "assets/Portrait_Vinuki_6.jpg",
+          "assets/Portrait_Vinuki_7.jpg",
+          "assets/Portrait_Vinuki_8.jpg",
+          "assets/Portrait_Vinuki_9.jpg",
+          "assets/Portrait_Vinuki_10.jpg"
+        ]
+      },
+      /*{
+        title: "Wedding — Kandy", category: "wedding", images: [
+          "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=80",
+          "assets/Wedding-Kandy-2.jpg",
+          "assets/Wedding-Kandy-3.jpg",
+          "assets/Wedding-Kandy-4.jpg",
+        ]
+      },
+      {
+        title: "Engagement — Mirissa", category: "engagement", images: [
+          "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1400&q=80",
+          "assets/Engagement-Mirissa-2.jpg",
+          "assets/Engagement-Mirissa-3.jpg",
+          "assets/Engagement-Mirissa-4.jpg",
+        ]
+      },*/
+    ];
+
+    const catLabel = { wedding: "Wedding", engagement: "Engagement", portrait: "Portrait" };
+
+    // ---------- BUILD ALBUM GRID ----------
+    const grid = document.getElementById('albumGrid');
+    albums.forEach((album, i) => {
+      const card = document.createElement('div');
+      card.className = 'album-card';
+      card.dataset.cat = album.category;
+      card.dataset.index = i;
+      card.innerHTML = `
+        <img src="${album.images[0]}" alt="${album.title}">
+        <span class="album-tag">${catLabel[album.category]}</span>
+        <span class="album-count">${album.images.length}</span>
+        <div class="album-inner">
+          <h3>${album.title.split('—')[0].trim()}</h3>
+          <span>${album.title.includes('—') ? album.title.split('—')[1].trim() : ''}</span>
+        </div>
+        <span class="album-expand">&#8599;</span>
+      `;
+      card.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(card);
+    });
+
+    document.getElementById('statAlbums').textContent = albums.length;
+    document.getElementById('statPhotos').textContent = albums.reduce((n, a) => n + a.images.length, 0);
+
+    // ---------- FILTER ----------
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.album-card').forEach(card => {
+          card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+        });
+      });
+    });
+
+    // ---------- LIGHTBOX ----------
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbCat = document.getElementById('lbCat');
+    const lbIndex = document.getElementById('lbIndex');
+    const lbTotal = document.getElementById('lbTotal');
+    const lbThumbs = document.getElementById('lbThumbs');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const lbClose = document.getElementById('lbClose');
+
+    let currentAlbum = 0;
+    let currentPhoto = 0;
+
+    function openLightbox(albumIndex) {
+      currentAlbum = albumIndex;
+      currentPhoto = 0;
+      renderLightbox();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lb-lock');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lb-lock');
+    }
+
+    function renderLightbox() {
+      const album = albums[currentAlbum];
+      const images = album.images;
+      lbCat.textContent = catLabel[album.category];
+      lbTitle.textContent = album.title;
+      lbImage.src = images[currentPhoto];
+      lbImage.alt = album.title + ' — photo ' + (currentPhoto + 1);
+      lbIndex.textContent = currentPhoto + 1;
+      lbTotal.textContent = images.length;
+
+      lbPrev.disabled = currentPhoto === 0;
+      lbNext.disabled = currentPhoto === images.length - 1;
+
+      lbThumbs.innerHTML = '';
+      if (images.length > 1) {
+        images.forEach((src, i) => {
+          const t = document.createElement('div');
+          t.className = 'lb-thumb' + (i === currentPhoto ? ' active' : '');
+          t.innerHTML = `<img src="${src}" alt="">`;
+          t.addEventListener('click', () => { currentPhoto = i; renderLightbox(); });
+          lbThumbs.appendChild(t);
+        });
+      }
+    }
+
+    lbPrev.addEventListener('click', () => { if (currentPhoto > 0) { currentPhoto--; renderLightbox(); } });
+    lbNext.addEventListener('click', () => {
+      const total = albums[currentAlbum].images.length;
+      if (currentPhoto < total - 1) { currentPhoto++; renderLightbox(); }
+    });
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbPrev.click();
+      if (e.key === 'ArrowRight') lbNext.click();
+    });
+
+    // scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+</body>
+
+</html>
